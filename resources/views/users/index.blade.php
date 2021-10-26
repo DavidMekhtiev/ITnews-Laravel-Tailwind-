@@ -7,18 +7,18 @@
 @section('content')
 <div class="w-11/12 float-left ml rounded-l">
     <div class="h-9 w-full text-right pr-2 pl-2 bg-white rounded-sm">
-        <a href="" class="float-left text-2xl font-medium hover:text-sky-900"> All </a>
-        <a class="float-left ml-4 text-2xl font-medium hover:text-sky-900"> Categories </a>
-        <span href="" class="float-left ml-4 text-2xl font-medium text-sky-900"> Users </span>
+        <a href="{{ route('posts.new') }}" class="float-left text-2xl font-medium hover:text-sky-900"> All </a>
+        <a href="{{ route('categories') }}" class="float-left ml-4 text-2xl font-medium hover:text-sky-900"> Categories </a>
+        <span class="float-left ml-4 text-2xl font-medium text-sky-900"> Users </span>
         <div class="pt-1">
-            <a href="" class="border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm pl-1 pr-1">Popular</a>
-            <a href="" class="border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm pl-1 pr-1">New</a>
+            <a href="{{ route('posts.popular') }}" class="border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm pl-1 pr-1">Popular</a>
+            <a href="{{ route('posts.new') }}" class="border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm pl-1 pr-1">New</a>
         </div>
     </div>
     @foreach ($users as $user)
         <div class="w-full min-h-64 mt-3 bg-white rounded-sm pl-2 pr-2 pt-1 pb-1">
             <div class="text-center w-36 inline-block">
-                <a href="" class="text-2xl hover:text-sky-900 font-semibold">{{ $user->name }}</a><br>
+                <a href="{{ route('users.id', $user->id) }}" class="text-2xl hover:text-sky-900 font-semibold">{{ $user->name }}</a><br>
                 <span class="text-gray-800">{{ $user->email }}</span>
             </div>
             <div class=" inline-block ml-48 float-right pt-3">

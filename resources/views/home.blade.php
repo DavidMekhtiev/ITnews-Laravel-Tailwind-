@@ -10,15 +10,15 @@
       <span class=" float-left text-2xl font-medium text-sky-900">
         All
       </span>
-      <a href="" class="float-left ml-4 text-2xl font-medium hover:text-sky-900">
+      <a href="{{ route('categories') }}" class="float-left ml-4 text-2xl font-medium hover:text-sky-900">
         Categories
       </a>
-      <a href="" class="float-left ml-4 text-2xl font-medium hover:text-sky-900">
+      <a href="{{ route('users') }}" class="float-left ml-4 text-2xl font-medium hover:text-sky-900">
         Users
       </a>
       <div class=" pt-1">
-        <a href="" class=" border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm pl-1 pr-1">Popular</a>
-        <a href="" class=" border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm pl-1 pr-1">New</a>
+        <a href="{{ route('posts.popular') }}" class=" border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm pl-1 pr-1">Popular</a>
+        <a href="{{ route('posts.new') }}" class=" border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm pl-1 pr-1">New</a>
       </div>
     </div>
     

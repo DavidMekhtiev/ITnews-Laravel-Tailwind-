@@ -8,7 +8,7 @@
 <div class="w-11/12 float-left ml rounded-l">
     <div class="w-full min-h-64 bg-white rounded-sm pl-2 pr-2 pt-1 pb-1">
         <div class="text-center w-36 inline-block">
-            <a href="" class="text-xl hover:text-sky-900 font-semibold ">{{ $post->user->name }}</a><br>
+            <a href="{{ route('users.id', $post->user->id) }}" class="text-xl hover:text-sky-900 font-semibold ">{{ $post->user->name }}</a><br>
             <span class="text-gray-800">{{ $post->created_at }}</span>
         </div>
         <div class=" inline-block break-all w-96 ml-14">
@@ -39,7 +39,7 @@
       <div class=" mt-8">
         @foreach ($post->commentaries as $comment)
           <div class=" border pl-5 pt-1 pb-1 mb-3">
-            <a href="" class=" font-semibold hover:text-sky-900">{{ $comment->user->name }}}</a>
+            <a href="{{ route('users.id', $comment->user->id) }}" class=" font-semibold hover:text-sky-900">{{ $comment->user->name }}}</a>
             <span class=" text-gray-600">{{ $comment->created_at }}</span><br>
             <span class="">{{ $comment->content }}</span>
           </div>

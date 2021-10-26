@@ -21,7 +21,7 @@ Route::get('/posts/{id}', [PostController::class, 'postById'])->name('posts.id')
 Route::get('/posts/category/{category}', [PostController::class, 'postByCategory'])->name('posts.category');
 Route::get('/posts/create/page', [PostController::class, 'goToCreatePage'])->name('posts.create.page');
 Route::post('/posts/create', [PostController::class, 'create'])->name('posts.create');
-//Post create
+Route::post('/posts/find', [PostController::class, 'find'])->name('posts.find');
 //Post edit
 
 //Comment create delete

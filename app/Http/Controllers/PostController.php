@@ -54,4 +54,10 @@ class PostController extends Controller
 
         return redirect()->route('posts.new');
     }
+
+    public function find(Request $request)
+    {
+        $posts = Post::where("title", "like", "%" . $request['title'] . "%")->paginate(5);
+        return view('home', ['posts'=> $posts]);
+    }
 }

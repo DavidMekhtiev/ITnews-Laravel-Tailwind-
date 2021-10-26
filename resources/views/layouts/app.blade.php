@@ -17,20 +17,20 @@
                 <a href="{{ route('posts.new') }}" title="Home Page" style="font-family: 'Hammersmith One', sans-serif;" class=" text-4xl text-white align-bottom">ITnews</a>
             </div>
             <div class="  w-2/6 h-full ml-44 align-bottom">
-                <form action="" class=" grid-flow-col grid">
+                <form action="{{ route('posts.find') }}" class=" grid-flow-col grid" method="POST">
                     @csrf
                     @method('POST')
-                    <input type="text" name="" id="" class=" h-7 w-72 rounded-l-sm">
-                    <button class=" border w-8 rounded-r-sm" title="Search">
+                    <input type="text" name="title" id="title" placeholder="Search..." class=" h-7 w-72 rounded-l-sm">
+                    <button class=" border w-8 rounded-r-sm" title="Search" type="submit">
                         <img src="https://img.icons8.com/ios/25/ffffff/search--v3.png"/>
                     </button>
                 </form>
             </div>
             <div class=" w-2/12 h-full ml-auto mr-9 grid grid-flow-col -mt-2">
-                <a href="" title="Creating a new post" class=" w-10 justify-self-end">
+                <a href="{{ route('posts.create.page') }}" title="Creating a new post" class=" w-10 justify-self-end">
                     <img src="https://img.icons8.com/ios/35/ffffff/create-new.png"/>
                 </a>
-                <a href="" title="Profile" class=" border-2 rounded-xl w-10 h-10">
+                <a href="{{ route('users.id', auth()->user()->id) }}" title="Profile" class=" border-2 rounded-xl w-10 h-10">
                     <img src="https://img.icons8.com/ios/35/ffffff/user--v1.png"/>
                 </a>
             </div>
