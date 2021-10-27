@@ -47,7 +47,7 @@
             </form>
             <!-- END Sign In Form -->
             <div class="mt-4 mb-5 ml-5">
-                <span>Don't have an account yet? <a href="" class="text-sky-800">Sign up</a></span>
+                <span>Don't have an account yet? <a href="http://127.0.0.1:8000/register" class="text-sky-800">Sign up</a></span>
             </div>
         </div>
     </body>

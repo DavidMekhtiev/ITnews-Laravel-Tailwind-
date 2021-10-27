@@ -25,15 +25,15 @@
     @foreach ($posts as $post)
       <div class=" w-full min-h-64 mt-3 bg-white rounded-sm pl-2 pr-2 pt-1 pb-1">
         <div class=" text-sm mb-3">
-          <a href="" class=" text-black font-medium hover:text-sky-800">{{$post->user->name}}</a>
+          <a href="{{ route('users.id', $post->user->id) }}" class=" text-black font-medium hover:text-sky-800">{{$post->user->name}}</a>
           <span class="text-gray-800">{{ $post->created_at }}</span>
         </div>
-        <a href="" class=" text-xl font-semibold hover:text-sky-700">{{ $post->title }}</a><br>
-        <a href="" class="text-gray-800 text-sm hover:text-sky-800 mr-2">{{ $post->category->title }}</a>
+        <a href="{{ route('posts.id', $post->id) }}" class=" text-xl font-semibold hover:text-sky-700">{{ $post->title }}</a><br>
+        <a href="{{ route('posts.category', $post->category->id) }}" class="text-gray-800 text-sm hover:text-sky-800 mr-2">{{ $post->category->title }}</a>
         <div class=" mt-3 mb-4">
           <span>{{ Str::limit($post->content, 250, $end='...') }}</span>
         </div>
-        <a href="" class=" border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm p-1">Read more-></a>
+        <a href="{{ route('posts.id', $post->id) }}" class=" border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm p-1">Read more-></a>
         <div class=" mt-3">
           <div class="">
             <img src="https://img.icons8.com/ios/20/000000/comments.png" class=" inline-block"/>

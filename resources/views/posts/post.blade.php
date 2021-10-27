@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    post title
+    {{ $post->title }}
 @endsection
 
 @section('content')
 <div class="w-11/12 float-left ml rounded-l">
-    <div class="w-full min-h-64 bg-white rounded-sm pl-2 pr-2 pt-1 pb-1">
+    <div class="w-full bg-white rounded-sm pl-2 pr-2 pt-1 pb-1">
         <div class="text-center w-36 inline-block">
             <a href="{{ route('users.id', $post->user->id) }}" class="text-xl hover:text-sky-900 font-semibold ">{{ $post->user->name }}</a><br>
             <span class="text-gray-800">{{ $post->created_at }}</span>
@@ -27,11 +27,14 @@
     </div>
     <div class="w-full min-h-64 mt-3 bg-white rounded-sm pl-5 pr-5 pt-2 pb-2">
       <div class="">
-        <form action="">
-          <textarea name="" id="" cols="105" rows="5" class=" border ">
+        <form action="{{ route('comment.create') }}" method="POST">
+          @csrf
+          @method('POST')
+          <textarea name="content" id="content" cols="105" rows="5" class=" border ">
             
           </textarea>
-          <button class="border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm pl-1 pr-1">
+          <input type="hidden" name="postId" value="{{ $post->id }}">
+          <button type="submit" class="border border-sky-700 text-sky-700 hover:text-white hover:bg-sky-700 text-lg rounded-sm pl-1 pr-1">
             Send
           </button>
         </form>
@@ -39,7 +42,7 @@
       <div class=" mt-8">
         @foreach ($post->commentaries as $comment)
           <div class=" border pl-5 pt-1 pb-1 mb-3">
-            <a href="{{ route('users.id', $comment->user->id) }}" class=" font-semibold hover:text-sky-900">{{ $comment->user->name }}}</a>
+            <a href="{{ route('users.id', $comment->user->id) }}" class=" font-semibold hover:text-sky-900">{{ $comment->user->name }}</a>
             <span class=" text-gray-600">{{ $comment->created_at }}</span><br>
             <span class="">{{ $comment->content }}</span>
           </div>

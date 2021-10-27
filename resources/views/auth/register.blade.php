@@ -64,7 +64,7 @@
                 </div>
             </form>
             <div class="mt-4 mb-5 ml-7">
-              <span>Already have an account? <a href="" class="text-sky-800">Sign in</a></span>
+              <span>Already have an account? <a href="http://127.0.0.1:8000/login" class="text-sky-800">Sign in</a></span>
             </div>
         </div>
     </body>

@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function userById($id)
     {
-        $user = User::where('id', $id)->get();
-        return view('users.profile', ['user'=>$user]);
+        $user = User::with('commentaries', 'posts')->where('id', $id)->get();
+        return view('users.profile', ['user'=>$user[0]]);
     }
 }

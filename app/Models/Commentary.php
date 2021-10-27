@@ -11,8 +11,6 @@ class Commentary extends Model
     protected $table = 'commentaries';
 
     protected $fillable = [
-        'post_id',
-        'user_id',
         'content',
     ];
 

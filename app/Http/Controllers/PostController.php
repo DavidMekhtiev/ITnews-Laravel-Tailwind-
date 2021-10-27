@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,26 +12,25 @@ class PostController extends Controller
 {
     public function getNew()
     {
-        $posts = DB::table('posts')->orderBy('created_at')->paginate(5);
+        $posts = Post::with('commentaries', 'user', 'category')->orderBy('created_at', 'DESC')->paginate(5);
         return view('home',['posts'=> $posts]);
     }
 
     public function getPopular()
     {
-        $posts = DB::table('posts')->orderBy('commentaries_count');
-        $posts = $posts->paginate(5);
+        $posts = Post::with('commentaries', 'user', 'category')->withCount('commentaries')->orderBy('commentaries_count', 'DESC')->paginate(5);
         return view('home',['posts'=> $posts]);
     }
 
     public function postById($id)
     {
-        $post = Post::where('id', $id)->get();
-        return view('posts.post', ['post'=>$post]);
+        $post = Post::with('commentaries', 'user', 'category')->where('id', $id)->get();
+        return view('posts.post', ['post'=>$post[0]]);
     }
 
     public function postByCategory($category)
     {
-        $posts = Category::where('title', $category)->posts->paginate(5);
+        $posts = Post::where('category_id', $category)->paginate(5);
         return view('home', ['posts'=> $posts]);
     }
 
@@ -47,10 +47,11 @@ class PostController extends Controller
             'content' => $request['content']
         ]);
 
-        $post = Post::where('title', $request['title']);
-        $category = Category::where('id', $request['category']);
-        $category = $category->posts()->save($post);
-        $post->category()->associate($category)->save();
+        $post = Post::where('title', $request['title'])->get();
+        $user = User::where('id', auth()->user()->id)->get();
+        $category = Category::where('id', $request['category'])->get();
+        $category[0] = $category[0]->posts()->save($post[0]);
+        $user[0] = $user[0]->posts()->save($post[0]);
 
         return redirect()->route('posts.new');
     }

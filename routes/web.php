@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentaryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -24,7 +25,9 @@ Route::post('/posts/create', [PostController::class, 'create'])->name('posts.cre
 Route::post('/posts/find', [PostController::class, 'find'])->name('posts.find');
 //Post edit
 
-//Comment create delete
+//Commentaries create delete
+Route::post('/comment/create', [CommentaryController::class, 'create'])->name('comment.create');
+Route::delete('/comment/delete', [CommentaryController::class, 'delete'])->name('comment.delete');
 
 //Users
 Route::get('users', [UserController::class, 'getAll'])->name('users');

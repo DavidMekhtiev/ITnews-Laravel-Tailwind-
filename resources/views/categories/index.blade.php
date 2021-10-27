@@ -23,8 +23,8 @@
     </div>
     
     @foreach ($categories as $category)
-      <div class=" w-full min-h-64 mt-3 pl-96 bg-white rounded-sm pt-1 pb-1">
-        <a href="{{ route('posts.category', $category->title) }}" class=" text-2xl hover:text-sky-900 font-normal">{{ $category->title }}</a>
+      <div class=" w-full min-h-64 mt-3 text-center bg-white rounded-sm pt-1 pb-1">
+        <a href="{{ route('posts.category', $category->id) }}" class=" text-2xl hover:text-sky-900 font-normal">{{ $category->title }}</a>
       </div>
     @endforeach
 </div>
