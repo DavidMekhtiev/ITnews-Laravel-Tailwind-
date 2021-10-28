@@ -12,13 +12,13 @@ class PostController extends Controller
 {
     public function getNew()
     {
-        $posts = Post::with('commentaries', 'user', 'category')->orderBy('created_at', 'DESC')->paginate(5);
+        $posts = Post::with('commentaries', 'user', 'category')->orderBy('created_at', 'DESC')->paginate(4);
         return view('home',['posts'=> $posts]);
     }
 
     public function getPopular()
     {
-        $posts = Post::with('commentaries', 'user', 'category')->withCount('commentaries')->orderBy('commentaries_count', 'DESC')->paginate(5);
+        $posts = Post::with('commentaries', 'user', 'category')->withCount('commentaries')->orderBy('commentaries_count', 'DESC')->paginate(4);
         return view('home',['posts'=> $posts]);
     }
 
@@ -30,7 +30,7 @@ class PostController extends Controller
 
     public function postByCategory($category)
     {
-        $posts = Post::where('category_id', $category)->paginate(5);
+        $posts = Post::where('category_id', $category)->paginate(4);
         return view('home', ['posts'=> $posts]);
     }
 
@@ -56,9 +56,29 @@ class PostController extends Controller
         return redirect()->route('posts.new');
     }
 
+    public function edit(Post $post)
+    {
+        return view('posts.edit',[ 'post'=>$post ]);
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->save();
+
+        return redirect()->route('home');
+    }
+
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect()->back();
+    }
+
     public function find(Request $request)
     {
-        $posts = Post::where("title", "like", "%" . $request['title'] . "%")->paginate(5);
+        $posts = Post::where("title", "like", "%" . $request['title'] . "%")->paginate(4);
         return view('home', ['posts'=> $posts]);
     }
 }

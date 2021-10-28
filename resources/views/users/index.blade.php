@@ -33,6 +33,9 @@
             </div>
         </div>
     @endforeach
+    <br>
+    {{ $users->links() }}
+    <br>
 </div>
 
   <div class="bg-white h-100 w-1/4 ml-10 rounded-r-sm text-center pt-80">

@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 //Categories
@@ -22,10 +21,12 @@ Route::get('/posts/{id}', [PostController::class, 'postById'])->name('posts.id')
 Route::get('/posts/category/{category}', [PostController::class, 'postByCategory'])->name('posts.category');
 Route::get('/posts/create/page', [PostController::class, 'goToCreatePage'])->name('posts.create.page');
 Route::post('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('/posts/edit/{post}', [PostController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/update/{post}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('/posts/delete/{post}', [PostController::class, 'delete'])->name('posts.delete');
 Route::post('/posts/find', [PostController::class, 'find'])->name('posts.find');
-//Post edit
 
-//Commentaries create delete
+//Commentaries
 Route::post('/comment/create', [CommentaryController::class, 'create'])->name('comment.create');
 Route::delete('/comment/delete', [CommentaryController::class, 'delete'])->name('comment.delete');
 

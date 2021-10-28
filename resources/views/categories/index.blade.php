@@ -27,6 +27,9 @@
         <a href="{{ route('posts.category', $category->id) }}" class=" text-2xl hover:text-sky-900 font-normal">{{ $category->title }}</a>
       </div>
     @endforeach
+    <br>
+    {{ $categories->links() }}
+    <br>
 </div>
 
   <div class=" bg-white h-100 w-1/4 ml-10 rounded-r-sm text-center pt-80">

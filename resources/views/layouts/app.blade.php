@@ -20,7 +20,7 @@
                 <form action="{{ route('posts.find') }}" class=" grid-flow-col grid" method="POST">
                     @csrf
                     @method('POST')
-                    <input type="text" name="title" id="title" placeholder="Search..." class=" h-7 w-72 rounded-l-sm">
+                    <input type="text" name="title" id="title" placeholder="Search..." class=" h-7 w-72 rounded-l-sm pl-1 pr-1">
                     <button class=" border w-8 rounded-r-sm" title="Search" type="submit">
                         <img src="https://img.icons8.com/ios/25/ffffff/search--v3.png"/>
                     </button>
